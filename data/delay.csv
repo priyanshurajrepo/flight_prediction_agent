@@ -1,0 +1,64 @@
+Sl. No.,Airline,Month,Number of Departures,Number of flights Delayed,% On-time Performance
+1,Akasa Air,Jan-24,2026,571,71.8
+2,Vistara,Jan-24,5328,1713,67.8
+3,Indigo,Jan-24,19943,7924,60.3
+4,AIX Connect,Jan-24,2399,964,59.8
+5,Alliance Air,Jan-24,831,407,51
+6,Air India,Jan-24,5995,3140,47.6
+7,Spice Jet,Jan-24,2065,1283,37.9
+8,AIX Connect,Feb-24,2280,604,73.5
+9,Akasa Air,Feb-24,1933,524,72.9
+10,Indigo,Feb-24,19520,5325,72.7
+11,Vistara,Feb-24,5135,1676,67.4
+12,Spice Jet,Feb-24,1926,788,59.1
+13,Air India,Feb-24,6043,2632,56.4
+14,Alliance Air,Feb-24,806,417,48.3
+15,Akasa Air,Mar-24,2097,326,84.5
+16,AIX Connect,Mar-24,2342,397,83
+17,Indigo,Mar-24,21392,4000,81.3
+18,Vistara,Mar-24,5326,1245,76.6
+19,Air India,Mar-24,6575,1847,71.9
+20,Spice Jet,Mar-24,2100,765,63.6
+21,Alliance Air,Mar-24,850,437,48.6
+22,Akasa Air,Apr-24,2026,218,89.2
+23,AIX Connect,Apr-24,2193,449,79.5
+24,Vistara,Apr-24,5037,1200,76.2
+25,Indigo,Apr-24,20755,4968,76.1
+26,Air India,Apr-24,6812,1899,72.1
+27,Spice Jet,Apr-24,1860,666,64.2
+28,Alliance Air,Apr-24,776,392,49.5
+29,Akasa Air,May-24,2200,310,85.9
+30,Vistara,May-24,5149,932,81.9
+31,AIX Connect,May-24,2127,533,74.9
+32,Indigo,May-24,21413,5826,72.8
+33,Air India,May-24,6631,2095,68.4
+34,Spice Jet,May-24,1721,676,60.7
+35,Alliance Air,May-24,884,365,58.7
+36,Akasa Air,Jun-24,2124,436,79.5
+37,Vistara,Jun-24,5307,1112,79
+38,AIX Connect,Jun-24,1855,401,1 78.4
+39,Indigo,Jun-24,20356,4971,75.6
+40,Air India,Jun-24,6896,2717,60.6
+41,Alliance Air,Jun-24,863,357,58.6
+42,Spice Jet,Jun-24,1596,861,46.1
+43,AIX Connect,Jul-24,1794,533,70.3
+44,Vistara,Jul-24,5441,1924,64.6
+45,Akasa Air,Jul-24,2108,754,64.2
+46,Indigo,Jul-24,20887,7946,62
+47,Air India,Jul-24,6913,2946,57.4
+48,Alliance Air,Jul-24,771,369,52.1
+49,Spice Jet,Jul-24,1340,947,29.3
+50,Akasa Air,Auguest 2024,2062,594,71.2
+51,Vistara,Auguest 2024,5761,1807,68.6
+52,AIX Connect,Auguest 2024,1809,601,66.8
+53,Indigo,Auguest 2024,21679,7365,66
+54,Air India,Auguest 2024,7166,2436,66
+55,Alliance Air,Auguest 2024,776,347,55.3
+56,Spice Jet,Auguest 2024,1121,773,31
+57,AIX Connect,Sep-24,1730,517,70.1
+58,Indigo,Sep-24,21692,6673,69.2
+59,Vistara,Sep-24,5432,1676,69.1
+60,Air India,Sep-24,7188,2290,68.1
+61,Akasa Air,Sep-24,1967,746,62.1
+62,Alliance Air,Sep-24,645,298,53.8
+63,Spice Jet,Sep-24,1000,696,30.4
