@@ -10,9 +10,6 @@ from flight_lookup_agent import get_flight_details
 
 from airport_agent import get_airport_info
 
-from utils import convert_time
-from distance_agent import get_distance
-
 from airline_history_agent import get_cancellation_history
 
 from delay_agent import get_delay_history
