@@ -1,0 +1,8 @@
+streamlit
+langgraph
+langchain
+langchain-groq
+pandas
+requests
+python-dotenv
+typing_extensions
