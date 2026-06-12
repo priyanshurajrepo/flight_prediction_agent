@@ -1,8 +1,7 @@
-streamlit
+fastapi
+uvicorn
 langgraph
 langchain
-langchain-groq
+python-dotenv
 pandas
 requests
-python-dotenv
-typing_extensions

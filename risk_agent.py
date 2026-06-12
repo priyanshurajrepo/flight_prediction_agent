@@ -58,10 +58,13 @@ def calculate_risk(
         weather_score * 0.2
     )
 
-    return round(
-        final_risk,
-        2
-    )
+    return {
+    "final_risk": round(final_risk, 2),
+    "ml_score": round(ml_score, 2),
+    "history_score": round(history_score, 2),
+    "delay_score": round(delay_score, 2),
+    "weather_score": round(weather_score, 2)
+}
 
 
 def get_risk_level(score):

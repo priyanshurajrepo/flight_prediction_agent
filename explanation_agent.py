@@ -29,50 +29,33 @@ def explain(
     prompt = f"""
 You are an aviation risk analyst.
 
-Flight Risk Score:
-{risk_score}/100
+Flight Risk Score: {risk_score}
 
-Final Risk Assessment:
-{risk_level}
+Weather:
+- Condition: {weather['condition']}
+- Temperature: {weather['temperature']}
+- Visibility: {weather['visibility']} km
 
-Current Weather:
-Condition: {weather['condition']}
-Visibility: {weather['visibility']} km
-Temperature: {weather['temperature']}°C
-Wind Speed: {weather['wind_speed']} km/h
+Delay History:
+- On-Time Performance: {delay['on_time']}%
 
-Historical Cancellation Data:
-Cancellation Rate: {history['cancel_rate']}%
-Technical Cancellations: {history['technical']}
-Operational Cancellations: {history['operational']}
-Weather Cancellations: {history['weather']}
+Cancellation History:
+- Cancellation Rate: {history['cancel_rate']}%
 
-Historical Delay Data:
-On-Time Performance: {delay['on_time']}%
-Delayed Flights: {delay['delayed_flights']}
-Total Departures: {delay['departures']}
+Generate output in EXACTLY this format:
 
-IMPORTANT:
-The final risk assessment has already been determined.
+Risk Summary
 
-Use this exact risk assessment:
-{risk_level}
+• Weather Impact: one short sentence
 
-Do NOT change it.
-Do NOT recalculate it.
-Do NOT classify the risk yourself.
+• Delay History: one short sentence
 
-Only explain the reasons behind this assessment.
+• Cancellation Trend: one short sentence
 
-Requirements:
-- Mention on-time performance.
-- Mention the main historical cancellation cause.
-- Mention weather impact.
-- Explain why the flight received the above assessment.
-- Give a short passenger recommendation.
-- Do not mention any raw ML probability.
+Recommendation:
+one short recommendation
 
-Keep answer under 100 words.
+Keep response under 80 words.
 """
 
     response = llm.invoke(prompt)

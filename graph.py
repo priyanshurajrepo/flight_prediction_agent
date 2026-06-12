@@ -39,6 +39,18 @@ class FlightState(TypedDict):
 
     risk_score: float
 
+    risk_breakdown: dict
+
+    flight_status: str
+
+    origin_airport: str
+
+    flight_date: str   
+
+    travel_date: str 
+
+    destination_airport: str
+
 
 def weather_node(state):
 
@@ -46,9 +58,22 @@ def weather_node(state):
         state["origin"]
     )
 
+    if airport is None:
+
+        state["weather"] = {
+            "temperature": 0,
+            "wind_speed": 0,
+            "humidity": 0,
+            "visibility": 10,
+            "condition": "Unknown"
+        }
+
+        return state
+
     weather = get_weather(
         airport["lat"],
-        airport["lon"]
+        airport["lon"],
+        state["flight_date"]
     )
 
     state["weather"] = weather
@@ -60,18 +85,15 @@ def weather_node(state):
 def risk_node(state):
 
     risk = calculate_risk(
-
-    50,   # default ML score
-
+    50,
     state["history"],
-
     state["delay"],
-
     state["weather"]
-
     )
 
-    state["risk_score"] = risk
+    state["risk_score"] = risk["final_risk"]
+
+    state["risk_breakdown"] = risk
 
     return state
 
@@ -94,16 +116,41 @@ def explanation_node(state):
 def lookup_flight_node(state):
 
     flight = get_flight_details(
-        state["flight_number"]
+        state["flight_number"],
+        state["flight_date"]
     )
-
-    print("AIRLINE:", flight["airline"])
 
     if flight is None:
 
-        raise ValueError(
-            f"Flight {state['flight_number']} not found"
+        prefix = "".join(
+            [c for c in state["flight_number"] if c.isalpha()]
+        ).upper()
+
+        airline_map = {
+            "AI": "Air India",
+            "6E": "Indigo",
+            "SG": "Spice Jet",
+            "UK": "Vistara",
+            "IX": "Air India Express",
+            "9I": "Alliance Air",
+            "QP": "Akasa Air"
+        }
+
+        state["airline"] = airline_map.get(
+            prefix,
+            "Unknown"
         )
+
+        state["origin"] = "Unknown"
+        state["destination"] = "Unknown"
+
+        state["departure_time"] = "Scheduled"
+
+        state["flight_status"] = "Scheduled"
+
+        return state
+
+    print("AIRLINE:", flight["airline"])
 
     state["airline"] = flight["airline"]
 
@@ -111,7 +158,11 @@ def lookup_flight_node(state):
 
     state["destination"] = flight["destination"]
 
+    state["travel_date"] = flight["travel_date"]
+
     state["departure_time"] = flight["departure_time"]
+
+    state["flight_status"] = flight["flight_status"]
 
     return state
 

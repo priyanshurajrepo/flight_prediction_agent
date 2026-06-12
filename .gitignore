@@ -1,5 +1,11 @@
 .env
+
 __pycache__/
 *.pyc
+
 venv/
+
+flight-risk-frontend/node_modules/
+flight-risk-frontend/dist/
+
 data/flights.csv

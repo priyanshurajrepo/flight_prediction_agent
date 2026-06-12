@@ -4,39 +4,62 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-API_KEY = os.getenv(
-    "AVIATIONSTACK_API_KEY"
-)
+API_KEY = os.getenv("RAPID_API_KEY")
+
 
 def get_flight_details(
-    flight_number
+    flight_number,
+    flight_date
 ):
 
-    flight_number = (
-        flight_number
-        .replace(" ", "")
-        .upper()
-    )
-
     url = (
-        "http://api.aviationstack.com/v1/flights"
-        f"?access_key={API_KEY}"
-        f"&flight_iata={flight_number}"
+        f"https://aerodatabox.p.rapidapi.com/"
+        f"flights/number/{flight_number}/{flight_date}"
     )
 
-    response = requests.get(url)
+    querystring = {
+        "withAircraftImage": "false",
+        "withLocation": "false",
+        "withFlightPlan": "false",
+        "dateLocalRole": "Both"
+    }
 
-    data = response.json()
+    headers = {
+        "x-rapidapi-key": API_KEY,
+        "x-rapidapi-host": "aerodatabox.p.rapidapi.com",
+        "Content-Type": "application/json"
+    }
 
-    print("Flight Number:", flight_number)
-    print("API Response Count:", len(data["data"]))
-    
+    response = requests.get(
+        url,
+        headers=headers,
+        params=querystring
+    )
 
-    if len(data["data"]) == 0:
+    if response.status_code != 200:
+       print("========== API ERROR ==========")
+       print("Status Code:", response.status_code)
+       print("Response:", response.text)
+       print("===============================")
+       return None
 
+    print("Status Code:", response.status_code)
+    print("Response Text:", response.text[:500])
+
+    try:
+       data = response.json()
+    except Exception as e:
+       print("JSON Error:", e)
+       print("Raw Response:", response.text[:1000])
+       return None
+
+    print("\n===== AERODATABOX =====")
+    print(data)
+
+    if not data:
         return None
 
-    flight = data["data"][0]
+    flight = data[0]
 
     return {
 
@@ -44,12 +67,24 @@ def get_flight_details(
         flight["airline"]["name"],
 
         "origin":
-        flight["departure"]["iata"],
+        flight["departure"]["airport"]["iata"],
 
         "destination":
-        flight["arrival"]["iata"],
+        flight["arrival"]["airport"]["iata"],
+
+        "origin_airport":
+        flight["departure"]["airport"]["name"],
+
+        "destination_airport":
+        flight["arrival"]["airport"]["name"],
 
         "departure_time":
-        flight["departure"]["scheduled"]
+        flight["departure"]["scheduledTime"]["local"].split(" ")[1],
 
+        "travel_date":
+        flight_date,
+        
+
+        "flight_status":
+        flight["status"]
     }
