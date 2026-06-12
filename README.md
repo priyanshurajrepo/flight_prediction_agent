@@ -1,273 +1,272 @@
 # ✈️ Flight Risk Predictor
 
-A LangGraph-based Multi-Agent AI System that analyzes flight risk using real-time weather data, historical airline performance, delay statistics, and LLM-powered explanations.
+### AI-Powered Aviation Analytics & Risk Assessment Platform
 
-## 🚀 Overview
+Flight Risk Predictor is a full-stack aviation analytics platform that evaluates the probability of flight disruptions using real-time flight intelligence, travel-day weather forecasts, historical airline performance, and AI-driven risk analysis.
 
-Flight delays and cancellations are influenced by multiple factors such as weather conditions, airline operational efficiency, technical issues, and historical performance.
-
-This project combines multiple AI agents to gather information from different sources, calculate a flight risk score, and generate a human-readable explanation for passengers.
-
-The system is built using:
-
-* LangGraph
-* Streamlit
-* Groq (Llama 3.3 70B)
-* AviationStack API
-* OpenWeather API
-* CSV-based Retrieval (Lightweight RAG)
+The platform helps travelers make informed decisions by combining multiple operational factors into a single risk assessment dashboard with actionable recommendations.
 
 ---
 
-## 🏗 Architecture
+## 🚀 Features
 
-```text
-User Input Flight Number
-            │
-            ▼
+### Flight Intelligence
+
+* Real-time flight lookup
+* Flight status tracking
+* Route information
+* Airport intelligence
+* Departure schedule analysis
+
+### Weather Analytics
+
+* Travel-day weather forecasting
+* Temperature analysis
+* Humidity monitoring
+* Visibility assessment
+* Wind speed analysis
+* Weather condition tracking
+
+### Airline Performance Analytics
+
+* Historical delay performance
+* On-time performance analysis
+* Delayed flight statistics
+* Historical cancellation analysis
+* Airline reliability insights
+
+### Risk Assessment
+
+* Flight disruption probability scoring
+* Delay risk analysis
+* Cancellation risk analysis
+* Weather impact analysis
+* Risk categorization (Low, Moderate, High)
+
+### AI-Powered Insights
+
+* Automated risk explanations
+* Passenger-friendly recommendations
+* Multi-factor disruption analysis
+* Travel decision support
+
+---
+
+## 📸 Dashboard Preview
+
+### Landing Page
+
+Modern aviation analytics dashboard designed for intuitive flight risk assessment.
+
+### Executive Summary
+
+Comprehensive flight overview including airline information, route details, departure schedule, and disruption probability.
+
+### Airport Intelligence
+
+Detailed airport information with route visualization and operational insights.
+
+### Risk Analytics
+
+Interactive dashboard displaying:
+
+* Weather Analysis
+* Delay Performance
+* Cancellation History
+* Risk Breakdown
+* AI Recommendations
+
+---
+
+## 🏗 System Architecture
+
+User Input (Flight Number + Date)
+│
+▼
 Flight Lookup Agent
-(AviationStack API)
-            │
-            ▼
-Airport Agent
-(Airport Coordinates)
-            │
-            ▼
-Weather Agent
+(AeroDataBox API)
+│
+▼
+Airport Intelligence Agent
+│
+▼
+Weather Forecast Agent
 (OpenWeather API)
-            │
-            ▼
-Airline History Agent
-(Cancellation Dataset)
-            │
-            ▼
-Delay Agent
-(Delay Dataset)
-            │
-            ▼
-Risk Agent
-(Custom Risk Engine)
-            │
-            ▼
-Explanation Agent
-(Groq + Llama 3.3 70B)
-            │
-            ▼
-Streamlit Dashboard
-```
+│
+▼
+Delay Analytics Agent
+│
+▼
+Cancellation Analytics Agent
+│
+▼
+Risk Scoring Engine
+│
+▼
+AI Explanation Agent
+│
+▼
+FastAPI Backend
+│
+▼
+React Analytics Dashboard
 
 ---
 
 ## 🤖 Multi-Agent Workflow
 
-### 1. Flight Lookup Agent
+### Flight Lookup Agent
 
 Retrieves:
 
-* Airline Name
-* Origin Airport
-* Destination Airport
-* Departure Time
+* Airline information
+* Flight status
+* Origin airport
+* Destination airport
+* Departure schedule
 
-using AviationStack API.
+### Airport Intelligence Agent
 
----
+Maps airport information and route metadata to support weather and operational analysis.
 
-### 2. Airport Agent
+### Weather Forecast Agent
 
-Maps airport codes to:
-
-* Latitude
-* Longitude
-
-using airport datasets.
-
----
-
-### 3. Weather Agent
-
-Fetches:
+Fetches travel-day weather forecasts using:
 
 * Temperature
+* Humidity
 * Visibility
 * Wind Speed
-* Humidity
-* Weather Condition
+* Weather Conditions
 
-using OpenWeather API.
+### Delay Analytics Agent
 
----
-
-### 4. Airline History Agent
-
-Retrieves historical airline cancellation records:
-
-* Cancellation Rate
-* Technical Cancellations
-* Operational Cancellations
-* Weather Cancellations
-
-from CSV datasets.
-
----
-
-### 5. Delay Agent
-
-Retrieves:
+Analyzes historical airline performance:
 
 * On-Time Performance
 * Delayed Flights
 * Total Departures
 
-from historical delay datasets.
+### Cancellation Analytics Agent
 
----
+Evaluates historical cancellation trends:
 
-### 6. Risk Agent
+* Cancellation Rate
+* Technical Issues
+* Operational Disruptions
+* Weather Disruptions
+* Commercial Causes
 
-Calculates a final flight risk score using:
+### Risk Engine
+
+Calculates flight disruption probability using:
 
 * Weather Conditions
-* Historical Cancellation Performance
-* Historical Delay Performance
+* Delay Performance
+* Cancellation History
+* Operational Risk Factors
 
-and classifies risk as:
+### AI Recommendation Agent
 
-* LOW
-* MODERATE
-* HIGH
+Generates:
 
----
-
-### 7. Explanation Agent
-
-Uses Groq's Llama 3.3 70B model to generate an easy-to-understand explanation for passengers.
+* Risk explanations
+* Operational insights
+* Passenger recommendations
 
 ---
 
-## 📊 Features
+## 📊 Risk Assessment Framework
 
-✅ Real-time flight lookup
+The platform evaluates disruption probability by combining:
 
-✅ Real-time weather analysis
+* Weather Risk
+* Historical Delay Risk
+* Historical Cancellation Risk
 
-✅ Historical airline cancellation analysis
+Output Categories:
 
-✅ Historical delay analysis
+* 🟢 Low Risk
+* 🟡 Moderate Risk
+* 🔴 High Risk
 
-✅ Custom flight risk scoring
-
-✅ AI-generated explanations
-
-✅ Multi-Agent LangGraph workflow
-
-✅ Interactive Streamlit dashboard
-
-✅ Deployed on Streamlit Cloud
-
----
-
-## 🗂 Project Structure
-
-```text
-flight_prediction_agent/
-│
-├── data/
-│   ├── airports.csv
-│   ├── cancellation.csv
-│   └── delay.csv
-│
-├── airline_history_agent.py
-├── airport_agent.py
-├── delay_agent.py
-├── explanation_agent.py
-├── flight_lookup_agent.py
-├── graph.py
-├── risk_agent.py
-├── weather_agent.py
-├── streamlit_app.py
-│
-├── requirements.txt
-└── README.md
-```
+The system also provides a numerical disruption probability and detailed risk breakdown.
 
 ---
 
 ## 🛠 Tech Stack
 
-### AI & Orchestration
+### Frontend
 
-* LangGraph
-* LangChain
-* Groq
-* Llama 3.3 70B
+* React.js
+* Vite
+* Tailwind CSS
 
 ### Backend
 
+* FastAPI
 * Python
 
-### Frontend
+### AI & Agentic Systems
 
-* Streamlit
+* LangGraph
+* LangChain
+* Groq LLM
+* Agent-Based Workflow Design
 
 ### APIs
 
-* AviationStack API
+* AeroDataBox API
 * OpenWeather API
 
 ### Data Processing
 
 * Pandas
+* CSV-Based Analytics Engine
+
+### Development Tools
+
+* Git
+* GitHub
+* VS Code
 
 ---
 
-## 🔑 Environment Variables
+## 📂 Project Structure
 
-Create a `.env` file:
+flight_prediction_agent/
 
-```env
-AVIATIONSTACK_API_KEY=your_key
+├── flight-risk-frontend/
 
-OPENWEATHER_API_KEY=your_key
+├── data/
 
-GROQ_API_KEY=your_key
-```
+│ ├── cancellation.csv
 
----
+│ └── delay.csv
 
-## ⚙️ Installation
+├── docs/
 
-Clone the repository:
+├── api.py
 
-```bash
-git clone https://github.com/your-username/flight_prediction_agent.git
+├── graph.py
 
-cd flight_prediction_agent
-```
+├── flight_lookup_agent.py
 
-Create virtual environment:
+├── weather_agent.py
 
-```bash
-python -m venv venv
-```
+├── airline_history_agent.py
 
-Activate environment:
+├── delay_agent.py
 
-```bash
-venv\Scripts\activate
-```
+├── risk_agent.py
 
-Install dependencies:
+├── explanation_agent.py
 
-```bash
-pip install -r requirements.txt
-```
+├── airline_mapper.py
 
-Run the application:
+├── requirements.txt
 
-```bash
-streamlit run streamlit_app.py
-```
+└── README.md
 
 ---
 
@@ -275,114 +274,55 @@ streamlit run streamlit_app.py
 
 ### Flight Number Standardization
 
-Users entered flight numbers in different formats:
+Handled multiple user input formats to ensure reliable flight retrieval across data sources.
 
-```text
-6E5275
-6E 5275
-6e5275
-```
+### Weather Forecast Selection
 
-A normalization layer was implemented to standardize user input before API lookup.
+Implemented travel-date-specific weather forecasting instead of relying on current weather conditions.
 
----
+### Airline Name Normalization
 
-**Airline Name Mismatch**
+Resolved inconsistencies across APIs and historical datasets to improve analytics accuracy.
 
-Different data sources represented airlines differently:
+### Missing Flight Data Handling
 
-```text
-SpiceJet
-Spice Jet
-```
+Added robust validation and fallback mechanisms to prevent system failures when APIs return incomplete information.
 
-A normalization strategy was implemented to ensure reliable dataset retrieval.
+### Multi-Source Data Integration
 
----
+Unified aviation, weather, delay, and cancellation data into a single analytics workflow.
 
- **API Limitations**
+### Airport Intelligence Mapping
 
-Some flights were unavailable through the aviation API.
-
-Robust validation and error handling were added to prevent system crashes.
+Built airport-code-to-location mapping to support weather forecasting and operational analysis.
 
 ---
 
-**LLM Consistency**
+## 🎯 Future Roadmap
 
-Initially, the LLM sometimes generated a risk level different from the calculated score.
-
-The Risk Agent was made the source of truth, while the LLM focuses only on explanation generation.
-
----
-
-**Airport Code to Weather Mapping**
-
-Weather APIs require geographic coordinates, while flight APIs provide airport codes.
-
-Example:
-
-DEL
-BLR
-IXB
-
-cannot be directly used for weather retrieval.
-
-Solution:
-Built an Airport Agent that maps airport codes to latitude and longitude using airport datasets, allowing accurate weather retrieval.
-
----
-
-**City Name Inconsistency Across Sources**
-
-Different data sources used different naming conventions for locations and airports.
-
-Examples:
-
-Bangalore
-Bengaluru
-
-Delhi
-New Delhi
-
-This caused lookup failures during integration.
-
-Solution:
-Switched from city-name-based retrieval to coordinate-based retrieval using airport codes and latitude/longitude mapping.
-
----
-
-**Missing Flight Data from Aviation API**
-
-Certain flight numbers were unavailable despite being valid flights.
-
-Examples:
-
-SG478
-
-The API occasionally returned incomplete or missing data because of free-tier limitations and coverage constraints.
-
-Solution:
-Added validation and error handling to prevent application crashes and provide meaningful feedback to users.
-
-
-
-## 🎯 Future Improvements
-
-* Live flight status tracking
-* Airport congestion analysis
-* Delay prediction model
-* Additional aviation data sources
-* Historical trend visualization
-* Cloud database integration
+* Machine Learning-Based Delay Prediction
+* Airport Congestion Analytics
+* Airline Reliability Scoring
+* Route Reliability Analytics
+* Interactive Route Maps
+* Historical Trend Visualization
+* Real-Time Operational Alerts
+* Cloud Database Integration
+* User Flight Watchlists
 
 ---
 
 ## 👨‍💻 Author
 
-**Priyanshu Raj**
+### Priyanshu Raj
 
 NIT Durgapur
 
-Passionate about AI, Multi-Agent Systems, Product Development, and Data Analyst
+Interests:
 
+* Agentic AI
+* Generative AI Applications
+* Data Analytics
+* Product Development
+* Aviation Intelligence Systems
+* Multi-Agent Architectures
