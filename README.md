@@ -105,36 +105,39 @@ Interactive visualization of overall flight disruption probability and risk cate
 
 ## 🏗 System Architecture
 
-User Input (Flight Number + Date)
-│
-▼
-Flight Lookup Agent
-(AeroDataBox API)
-│
-▼
-Airport Intelligence Agent
-│
-▼
-Weather Forecast Agent
-(OpenWeather API)
-│
-▼
-Delay Analytics Agent
-│
-▼
-Cancellation Analytics Agent
-│
-▼
-Risk Scoring Engine
-│
-▼
-AI Explanation Agent
-│
-▼
-FastAPI Backend
-│
-▼
-React Analytics Dashboard
+```mermaid
+flowchart TD
+
+A[User Input<br/>Flight Number + Travel Date]
+
+B[Flight Lookup Agent<br/>AeroDataBox API]
+
+C[Airport Intelligence Agent]
+
+D[Weather Forecast Agent<br/>OpenWeather API]
+
+E[Delay Analytics Agent]
+
+F[Cancellation Analytics Agent]
+
+G[Risk Scoring Engine]
+
+H[AI Explanation Agent]
+
+I[FastAPI Backend]
+
+J[React Analytics Dashboard]
+
+A --> B
+B --> C
+C --> D
+D --> E
+E --> F
+F --> G
+G --> H
+H --> I
+I --> J
+```
 
 ---
 
