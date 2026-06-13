@@ -54,27 +54,52 @@ The platform helps travelers make informed decisions by combining multiple opera
 
 ## 📸 Dashboard Preview
 
-### Landing Page
+## 📸 Screenshots
 
-Modern aviation analytics dashboard designed for intuitive flight risk assessment.
+### 🏠 Home Page
 
-### Executive Summary
+![Home Page](assets/home_page.png)
 
-Comprehensive flight overview including airline information, route details, departure schedule, and disruption probability.
+Modern aviation analytics dashboard with flight lookup and travel date forecasting.
 
-### Airport Intelligence
+---
 
-Detailed airport information with route visualization and operational insights.
+### 📊 Executive Summary
 
-### Risk Analytics
+![Executive Summary](assets/summary.png)
 
-Interactive dashboard displaying:
+Comprehensive flight overview displaying route information, flight status, disruption probability, and risk classification.
 
-* Weather Analysis
-* Delay Performance
-* Cancellation History
-* Risk Breakdown
-* AI Recommendations
+---
+
+### 🌦️ Weather, Delay & Cancellation Analytics
+
+![Analytics Cards](assets/Cards.png)
+
+Travel-day weather forecasting combined with historical delay performance and cancellation analytics.
+
+---
+
+### 📈 Risk Breakdown Dashboard
+
+![Risk Breakdown](assets/Risk_breakdown.png)
+
+Detailed breakdown of disruption probability including:
+
+* ML Risk Score
+* Delay Risk
+* Cancellation Risk
+* Weather Risk
+* Final Flight Disruption Probability
+
+---
+
+### 🎯 Disruption Probability Analysis
+
+![Probability Analysis](assets/Probability.png)
+
+Interactive visualization of overall flight disruption probability and risk categorization.
+
 
 ---
 
